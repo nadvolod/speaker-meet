@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -28,6 +29,14 @@ namespace SpeakerMeet
             result.Should().NotBeNull();
             result.Value.Should().NotBeNull();
             result.Value.Should().BeOfType(typeof(List<Speaker>));
+        }
+
+        [TestMethod]
+        public void GivenExactMatchThenOneSpeakerInCollection()
+        {
+            var result = controller.Search("Joshua") as OkObjectResult;
+            var speakers = ((IEnumerable<Speaker>)result.Value).ToList();
+            speakers.Count.Should().Be(1);
         }
     }
 }
