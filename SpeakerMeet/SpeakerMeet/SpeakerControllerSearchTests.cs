@@ -39,5 +39,17 @@ namespace SpeakerMeet
             speakers.Count.Should().Be(1);
             Assert.AreEqual("Joshua", speakers[0].Name);
         }
+        [DataTestMethod]
+        [DataRow("Joshua")]
+        [DataRow("joShua")]
+        [DataRow("joShuA")]
+        [DataRow("x")]
+        public void GivenCaseInsensitiveMatchThenSpeakerInCollection(string searchString)
+        {
+            var result = controller.Search(searchString) as OkObjectResult;
+            var speakers = ((IEnumerable<Speaker>)result.Value).ToList();
+            speakers.Count.Should().Be(1);
+            Assert.AreEqual("Joshua", speakers[0].Name);
+        }
     }
 }

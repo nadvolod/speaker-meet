@@ -8,7 +8,7 @@ namespace SpeakerMeet
         {
         }
 
-        internal OkObjectResult Search(string v)
+        internal OkObjectResult Search(string name)
         {
             return new OkObjectResult();
         }

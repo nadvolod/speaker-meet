@@ -2,13 +2,12 @@
 {
     internal class Speaker
     {
-        private string _name;
-
         public Speaker(string name)
         {
-            this._name = name;
+            this.Name = name;
         }
-
-        public string Name => _name;
+        //This is the same as having another property called _name
+        //and then retrieving that property like this public string Name => _name;
+        public string Name { get; }
     }
 }
