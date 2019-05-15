@@ -7,12 +7,6 @@ namespace SpeakerMeet
     public class SpeakerControllerSearchTests
     {
         [TestMethod]
-        public void ItExists()
-        {
-            var controller = new SpeakerController();
-        }
-
-        [TestMethod]
         public void ItHasSearch()
         {
             var controller = new SpeakerController();
