@@ -2,11 +2,13 @@
 {
     internal class Speaker
     {
-        private string v;
+        private string _name;
 
-        public Speaker(string v)
+        public Speaker(string name)
         {
-            this.v = v;
+            this._name = name;
         }
+
+        public string Name => _name;
     }
 }

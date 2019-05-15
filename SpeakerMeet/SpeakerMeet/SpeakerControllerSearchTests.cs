@@ -37,6 +37,7 @@ namespace SpeakerMeet
             var result = controller.Search("Joshua") as OkObjectResult;
             var speakers = ((IEnumerable<Speaker>)result.Value).ToList();
             speakers.Count.Should().Be(1);
+            Assert.AreEqual("Joshua", speakers[0].Name);
         }
     }
 }
