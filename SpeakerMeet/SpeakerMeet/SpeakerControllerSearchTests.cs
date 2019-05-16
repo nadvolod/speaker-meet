@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SpeakerMeet.API.Controllers;
+using SpeakerMeet.API;
+using Microsoft.AspNetCore.Mvc;
+using Speaker = SpeakerMeet.API.Speaker;
 
 namespace SpeakerMeet
 {
@@ -20,7 +24,7 @@ namespace SpeakerMeet
         {
             var result = controller.Search("Jos");
             result.Should().NotBeNull();
-            result.Should().BeOfType(typeof(OkObjectResult));
+            result.Should().BeOfType(typeof(Microsoft.AspNetCore.Mvc.OkObjectResult));
         }
 
         [TestMethod]
