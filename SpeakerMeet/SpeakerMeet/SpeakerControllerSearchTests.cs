@@ -64,9 +64,9 @@ namespace SpeakerMeet
             var result = controller.Search(MULTI_MATCH_STRING) as OkObjectResult;
             var speakers = ((IEnumerable<Speaker>)result.Value).ToList();
             speakers.Count.Should().Be(3, $"we provided a string match 3 names=>{MULTI_MATCH_STRING}");
-            speakers.Should().Contain("Josh");
-            speakers.Should().Contain("Joshua");
-            speakers.Should().Contain("Joseph");
+            speakers.Any(s => s.Name == "Josh").Should().BeTrue();
+            speakers.Any(s => s.Name == "Joshua").Should().BeTrue();
+            speakers.Any(s => s.Name == "Joseph").Should().BeTrue();
         }
     }
 }

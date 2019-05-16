@@ -17,13 +17,15 @@ namespace SpeakerMeet
         {
             var currentSpeakers = new List<Speaker>
             {
-                new Speaker("Joshua")
+                new Speaker("Joshua"),
+                new Speaker("Joseph"),
+                new Speaker("Josh")
             };
 
             var matchingSpeakers = new List<Speaker>();
             foreach (var speaker in currentSpeakers)
             {
-                if(speaker.Name.ToLower() == searchedName.ToLower())
+                if(speaker.Name.StartsWith(searchedName.ToLower(), System.StringComparison.OrdinalIgnoreCase))
                 {
                     matchingSpeakers.Add(speaker);
                 }
