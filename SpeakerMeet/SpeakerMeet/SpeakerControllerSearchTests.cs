@@ -8,6 +8,7 @@ namespace SpeakerMeet
     [TestClass]
     public class SpeakerControllerSearchTests
     {
+        private const string MULTI_MATCH_STRING = "jos";
         private SpeakerController controller;
         [TestInitialize]
         public void Setup()
@@ -50,12 +51,22 @@ namespace SpeakerMeet
             speakers.Count.Should().Be(1, $"we expect that the string isn't case sensitive=>{searchString}");
             speakers[0].Name.Should().Be("Joshua", $"we expect that the string isn't case sensitive=>{searchString}");
         }
-
+        [TestMethod]
         public void GiventNoMatchThenEmptyCollection()
         {
             var result = controller.Search("BADSTRING") as OkObjectResult;
             var speakers = ((IEnumerable<Speaker>)result.Value).ToList();
             speakers.Count.Should().Be(0, "we provided an invalid search string");
+        }
+        [TestMethod]
+        public void Given3MatchThenCollectionWith3Speakers()
+        {
+            var result = controller.Search(MULTI_MATCH_STRING) as OkObjectResult;
+            var speakers = ((IEnumerable<Speaker>)result.Value).ToList();
+            speakers.Count.Should().Be(3, $"we provided a string match 3 names=>{MULTI_MATCH_STRING}");
+            speakers.Should().Contain("Josh");
+            speakers.Should().Contain("Joshua");
+            speakers.Should().Contain("Joseph");
         }
     }
 }
