@@ -4,26 +4,26 @@ namespace SpeakerMeet
 {
     internal class OkObjectResult
     {
-        private string name;
+        private readonly string searchedName;
 
         public OkObjectResult(string searchString)
         {
-            this.name = searchString;
+            this.searchedName = searchString;
         }
 
         public List<Speaker> Value => ReturnSpeakers();
 
         private List<Speaker> ReturnSpeakers()
         {
-            var list = new List<Speaker>
+            var currentSpeakers = new List<Speaker>
             {
                 new Speaker("Joshua")
             };
 
             var matchingSpeakers = new List<Speaker>();
-            foreach (var speaker in list)
+            foreach (var speaker in currentSpeakers)
             {
-                if(speaker.Name.ToLower() == name.ToLower())
+                if(speaker.Name.ToLower() == searchedName.ToLower())
                 {
                     matchingSpeakers.Add(speaker);
                 }
