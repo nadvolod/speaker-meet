@@ -50,5 +50,12 @@ namespace SpeakerMeet
             speakers.Count.Should().Be(1, $"we expect that the string isn't case sensitive=>{searchString}");
             speakers[0].Name.Should().Be("Joshua", $"we expect that the string isn't case sensitive=>{searchString}");
         }
+
+        public void GiventNoMatchThenEmptyCollection()
+        {
+            var result = controller.Search("BADSTRING") as OkObjectResult;
+            var speakers = ((IEnumerable<Speaker>)result.Value).ToList();
+            speakers.Count.Should().Be(0, "we provided an invalid search string");
+        }
     }
 }
