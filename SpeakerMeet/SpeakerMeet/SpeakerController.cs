@@ -10,7 +10,7 @@ namespace SpeakerMeet
 
         internal OkObjectResult Search(string name)
         {
-            return new OkObjectResult();
+            return new OkObjectResult(name);
         }
     }
 }

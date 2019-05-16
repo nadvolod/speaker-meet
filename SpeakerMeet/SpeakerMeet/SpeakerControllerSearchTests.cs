@@ -43,13 +43,12 @@ namespace SpeakerMeet
         [DataRow("Joshua")]
         [DataRow("joShua")]
         [DataRow("joShuA")]
-        [DataRow("x")]
         public void GivenCaseInsensitiveMatchThenSpeakerInCollection(string searchString)
         {
             var result = controller.Search(searchString) as OkObjectResult;
             var speakers = ((IEnumerable<Speaker>)result.Value).ToList();
-            speakers.Count.Should().Be(1);
-            Assert.AreEqual("Joshua", speakers[0].Name);
+            speakers.Count.Should().Be(1, $"we expect that the string isn't case sensitive=>{searchString}");
+            speakers[0].Name.Should().Be("Joshua", $"we expect that the string isn't case sensitive=>{searchString}");
         }
     }
 }
