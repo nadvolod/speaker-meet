@@ -1,4 +1,6 @@
-﻿namespace SpeakerMeet.API.Tests
+﻿using System;
+
+namespace SpeakerMeet.API.Tests
 {
     internal class SpeakerService
     {
@@ -9,6 +11,13 @@
         {
             _fakeRepository = fakeRepository;
             this.fakeGravatarService = fakeGravatarService;
+        }
+
+        public object Id { get; internal set; }
+
+        internal object Get(object id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
